@@ -24,10 +24,10 @@ F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\staticwebassets.build
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\staticwebassets.build.json.cache
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\staticwebassets.development.json
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\mextyapp.csproj.Up2Date
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\mextyapp.dll
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\refint\mextyapp.dll
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\mextyapp.pdb
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\mextyapp.genruntimeconfig.cache
 F:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\ref\mextyapp.dll
+f:\developement\mextyapp\backend\mextyapp\obj\Debug\net9.0\mextyapp.sourcelink.json

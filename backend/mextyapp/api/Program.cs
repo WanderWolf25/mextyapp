@@ -3,6 +3,19 @@ using MexyApp.Data; // Importa el namespace donde está AppDbContext
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 
+// Guardamos el color original para restaurarlo después
+var colorOriginal = Console.ForegroundColor;
+
+// Cambiamos el color a verde
+Console.ForegroundColor = ConsoleColor.Green;
+
+// Escribimos el texto
+Console.WriteLine("¡Esto es verde!");
+
+// Restauramos el color original
+Console.ForegroundColor = colorOriginal;
+
+
 Console.WriteLine("Iniciando MexyApp");
 // Mensaje en consola para confirmar que la app arranca.
 
@@ -47,3 +60,17 @@ using (var scope = app.Services.CreateScope())
 
 app.Run();
 // Inicia la aplicación y escucha peticiones.
+
+app.MapGet("/ping-db", async (AppDbContext db) =>
+{
+    try
+    {
+        await db.Database.OpenConnectionAsync();
+        await db.Database.CloseConnectionAsync();
+        return Results.Ok(new { ok = true, message = "Conexión a Supabase exitosa" });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(title: "Error de conexión", detail: ex.Message, statusCode: 500);
+    }
+});

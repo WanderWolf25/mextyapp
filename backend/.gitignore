@@ -1,25 +1,16 @@
-# Ignorar todo por defecto
-/*
 
-# Permitir documentacion
-!/documentacion/
+bin
 
-# Permitir toda la carpeta mextyapp/api
-!/mexyapp/api/
-!mexyapp/appsettings.json
+Migrations
+obj
+Properties
 
-# Ignorar bin y obj
-bin/
-obj/
 
-# Ignorar archivos de usuario de Visual Studio
-*.user
-*.suo
-*.vs/
-.vscode/
-
-# Ignorar logs
-*.log
-
-# Ignorar archivos de configuración local de desarrollo
+.gitignore
 appsettings.Development.json
+
+combined_repomix.txt
+mexyapp.csproj
+mexyapp.csproj.user
+mexyapp.http
+mexyapp.sln

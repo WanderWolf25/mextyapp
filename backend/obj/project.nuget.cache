@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YpAsjWmEirU=",
+  "dgSpecHash": "wijvaNH2YvM=",
   "success": true,
-  "projectFilePath": "F:\\developement\\mextyapp\\backend\\mexyapp\\mexyapp.csproj",
+  "projectFilePath": "F:\\developement\\mexyapp\\backend\\mexyapp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aleja\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Aleja\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

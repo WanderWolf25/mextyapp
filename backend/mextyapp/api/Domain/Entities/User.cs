@@ -1,4 +1,4 @@
-
+namespace MexyApp.Models;
 public enum RoleName { Comprador, Artesano, Soporte, Administrador }
 public enum UserStatus { Activo, Bloqueado } // “Inactivo/Suspendido” suele duplicar Bloqueado
 

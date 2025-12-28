@@ -12,28 +12,38 @@ public static class UsersEndpoints
         var group = routes.MapGroup("/api/users").WithTags("Users");
 
         // POST /api/users (no necesita Include)
-        group.MapPost("/", async (CreateUserRequest req, MexyContext db) =>
-        {
-            var email = req.Email.Trim().ToLowerInvariant();
-            if (await db.Users.AnyAsync(u => u.Email == email))
-                return Results.Conflict($"Email '{email}' ya está registrado.");
+        
+// En UsersEndpoints.cs (dentro del MapPost)
+group.MapPost("/", async (CreateUserRequest req, MexyContext db) =>
+{
+    if (string.IsNullOrWhiteSpace(req.Username) ||
+        string.IsNullOrWhiteSpace(req.Email) ||
+        string.IsNullOrWhiteSpace(req.Password))
+    {
+        return Results.BadRequest("Username, Email y Password son obligatorios.");
+    }
 
-            var hash = BCrypt.Net.BCrypt.HashPassword(req.Password);
-            var user = new MexyApp.Models.User(req.Username, email, hash);
+    var email = req.Email.Trim().ToLowerInvariant();
+    if (await db.Users.AnyAsync(u => u.Email == email))
+        return Results.Conflict($"Email '{email}' ya está registrado.");
 
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
+    var hash = BCrypt.Net.BCrypt.HashPassword(req.Password);
+    var user = new MexyApp.Models.User(req.Username, email, hash);
 
-            var dto = new UserResponse(
-                user.Id,
-                user.Username,
-                user.Email,
-                user.Status.ToString(),
-                user.Roles.Select(r => r.ToString()).ToArray()
-            );
+    db.Users.Add(user);
+    await db.SaveChangesAsync();
 
-            return Results.Created($"/api/users/{user.Id}", dto);
-        });
+    var dto = new UserResponse(
+        user.Id,
+        user.Username,
+        user.Email,
+        user.Status.ToString(),
+        user.Roles.Select(r => r.ToString()).ToArray()
+    );
+
+    return Results.Created($"/api/users/{user.Id}", dto);
+});
+
 
         // GET /api/users/{id} → aquí va el Include("_userRoles")
         group.MapGet("/{id:int}", async (int id, MexyContext db) =>

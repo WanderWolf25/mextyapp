@@ -1,0 +1,7 @@
+F:\developement\mexyapp\backend\obj\Debug\net8.0\rpswa.dswa.cache.json
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.GeneratedMSBuildEditorConfig.editorconfig
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.AssemblyInfoInputs.cache
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.AssemblyInfo.cs
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.csproj.CoreCompileInputs.cache
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.MvcApplicationPartsAssemblyInfo.cache
+F:\developement\mexyapp\backend\obj\Debug\net8.0\mexyapp.sourcelink.json

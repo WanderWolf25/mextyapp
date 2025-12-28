@@ -7,7 +7,7 @@ using MexyApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
+using  MexyApp.Api.Endpoints;
 var builder = WebApplication.CreateBuilder(args);
 
 // ==========================================
@@ -113,14 +113,10 @@ void RegisterServices(WebApplicationBuilder builder, string connString)
 /// </summary>
 void RegisterEndpoints(WebApplication app)
 {
-    app.MapGet("/crear-usuario", async (string username, string email, string password, MexyContext db) =>
-    {
-        var hash = BCrypt.Net.BCrypt.HashPassword(password);
-        var user = new User(username, email, hash);
-        db.Users.Add(user);
-        await db.SaveChangesAsync();
-        return $"Usuario creado con ID: {user.Id}";
-    });
+
+app.MapUsersEndpoints();
+
+
 }
 
 /// <summary>

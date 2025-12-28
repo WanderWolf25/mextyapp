@@ -1,58 +1,24 @@
 
 using MexyApp.Api.Domain;
+using MexyApp.Models;
 using Microsoft.EntityFrameworkCore;
-
-Console.WriteLine("Iniciando MexyApp");
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DbContext → PostgreSQL (Supabase pooler 6543)
-// Mantén timeouts y reintentos para operación normal (lecturas/escrituras)
 builder.Services.AddDbContext<MexyContext>(opt =>
-    opt.UseNpgsql(
-        builder.Configuration.GetConnectionString("Default"),
-        npgsql =>
-        {
-            npgsql.CommandTimeout(180);
-            npgsql.EnableRetryOnFailure(8, TimeSpan.FromSeconds(8), null);
-            // No configures MigrationsAssembly si no vas a migrar en runtime
-            // npgsql.MigrationsAssembly(typeof(MextyContext).Assembly.GetName().Name);
-        }
-    )
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
 );
-
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+// ÚNICO endpoint: crea usuario con hash BCrypt
+app.MapGet("/crear-usuario", async (string username, string email, string password, MexyContext db) =>
 {
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-
-app.MapControllers();
-
-// Endpoint de salud de base de datos (opcional)
-app.MapGet("/ping-db", async (MexyContext db) =>
-{
-    try
-    {
-        await db.Database.OpenConnectionAsync();
-        await db.Database.CloseConnectionAsync();
-        return Results.Ok(new { ok = true, message = "Conexión a Supabase exitosa" });
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem(title: "Error de conexión", detail: ex.Message, statusCode: 500);
-    }
+    var hash = BCrypt.Net.BCrypt.HashPassword(password);
+    var user = new User(username, email, hash);
+    db.Users.Add(user);
+    await db.SaveChangesAsync();
+    return $"Usuario creado con ID: {user.Id}";
 });
-
-// Importante: NO migres ni hagas seed aquí si el esquema ya fue aplicado por SQL
-// await app.MigrateAndSeedAsync(...);  // ← ELIMINADO
-// using (var scope = app.Services.CreateScope()) { ... db.Database.MigrateAsync(); } // ← ELIMINADO
 
 app.Run();

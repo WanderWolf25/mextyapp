@@ -3,10 +3,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace mextyapp.Migrations
+namespace mexyapp.Migrations
 {
     /// <inheritdoc />
-    public partial class InitUsersAndUserRoles : Migration
+    public partial class UsersRoles_NavigationFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

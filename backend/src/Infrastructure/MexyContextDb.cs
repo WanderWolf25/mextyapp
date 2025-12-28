@@ -30,22 +30,28 @@ namespace MexyApp.Api.Domain
                  .HasConversion<string>()
                  .HasMaxLength(20)
                  .IsRequired();
+
+                // Relación 1..N usando backing field "_userRoles" (no hay propiedad de navegación pública)
+                b.HasMany<UserRole>("_userRoles")
+                 .WithOne(ur => ur.User)
+                 .HasForeignKey(ur => ur.UserId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                b.Navigation("_userRoles")
+                 .UsePropertyAccessMode(PropertyAccessMode.Field);
             });
 
             modelBuilder.Entity<UserRole>(b =>
             {
                 b.ToTable("UserRoles");
+
+                // Unicidad por (UserId, Role)
                 b.HasKey(ur => new { ur.UserId, ur.Role });
 
                 b.Property(ur => ur.Role)
                  .HasConversion<string>()
                  .HasMaxLength(50)
                  .IsRequired();
-
-                b.HasOne(ur => ur.User)
-                 .WithMany()
-                 .HasForeignKey(ur => ur.UserId)
-                 .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

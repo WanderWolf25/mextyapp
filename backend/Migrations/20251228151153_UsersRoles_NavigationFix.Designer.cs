@@ -8,11 +8,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace mextyapp.Migrations
+namespace mexyapp.Migrations
 {
     [DbContext(typeof(MexyContext))]
-    [Migration("20251227222339_InitUsersAndUserRoles")]
-    partial class InitUsersAndUserRoles
+    [Migration("20251228151153_UsersRoles_NavigationFix")]
+    partial class UsersRoles_NavigationFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,12 +78,17 @@ namespace mextyapp.Migrations
             modelBuilder.Entity("MexyApp.Models.UserRole", b =>
                 {
                     b.HasOne("MexyApp.Models.User", "User")
-                        .WithMany()
+                        .WithMany("_userRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MexyApp.Models.User", b =>
+                {
+                    b.Navigation("_userRoles");
                 });
 #pragma warning restore 612, 618
         }

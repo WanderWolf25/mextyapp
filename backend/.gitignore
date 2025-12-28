@@ -1,15 +1,9 @@
 
 bin
-
-Migrations
 obj
 Properties
-
-
 .gitignore
 appsettings.Development.json
-
-combined_repomix.txt
 mexyapp.csproj
 mexyapp.csproj.user
 mexyapp.http

@@ -30,7 +30,7 @@ public class User
         PasswordHash = passwordHash;
 
         // Rol base por defecto
-        _userRoles.Add(new UserRole { Role = RoleName.Comprador });
+       /*  _userRoles.Add(new UserRole { Role = RoleName.Comprador }); */
     }
 
     public bool HasRole(RoleName role) => _userRoles.Any(r => r.Role == role);

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mexyapp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af5e403c35db3c390c49ebd4061bb16fb35724d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f13cba9a3a94ceb503b8ee5bd65a3c76d841efe")]
 [assembly: System.Reflection.AssemblyProductAttribute("mexyapp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mexyapp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

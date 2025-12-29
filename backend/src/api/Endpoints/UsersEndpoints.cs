@@ -31,7 +31,7 @@ public static class UsersEndpoints
                 return Results.Conflict($"Email '{email}' ya está registrado.");
 
             // Hash de contraseña y creación de entidad
-            var hash = BCrypt.Net.BCrypt.HashPassword(req.Password);
+            var hash = BCrypt.Net.BCrypt.HashPassword(req.Password, workFactor: 10);
             var user = new MexyApp.Models.User(req.Username, email, hash);
 
             // Persistencia

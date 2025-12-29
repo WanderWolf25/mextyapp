@@ -47,6 +47,7 @@ documentacion/PlugAndPlay.md
 documentacion/ReglasGlobales.docx
 documentacion/RolesReglas.docx
 documentacion/UsoEFCore.md
+resumen_cambios.txt
 src/api/Contracts/CreateUserRequest.cs
 src/api/Contracts/folderinformation.md
 src/api/Contracts/UserResponse.cs.cs
@@ -129,6 +130,1162 @@ PlugAndPlay
    Paraproyectosnuevos,EFCoreaceleramuchoelCRUDymigraciones.
 
 */
+</file>
+
+<file path="resumen_cambios.txt">
+6a22ff7 feat(api): estabilizar creacion de usuarios (sin pre-chequeo de email, manejo 23505, fallback por timeout) + ajustes de Npgsql/EF
+M	backend/.vscode/settings.json
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/src/Infrastructure/Entities/User.cs
+M	backend/src/Program.cs
+M	backend/src/api/Endpoints/UsersEndpoints.cs
+8f13cba Cambiar el factor de bcryp en el endpoint de password a un workfactor de 10
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/repomix-output.xml
+M	backend/src/api/Endpoints/UsersEndpoints.cs
+af5e403 fix(api): robustecer POST /api/users con validaci├│n y manejo de conflicto  a├▒ade validaci├│n de campos obligatorios, normaliza email (Trim+ToLowerInvariant), verifica unicidad (409), responde 201 Created con DTO y Location; elimina NullReferenceException y asegura persistencia; GET /api/users/{id} mantiene Include(_userRoles)
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/src/api/Endpoints/UsersEndpoints.cs
+a30de6b fix(api): POST /api/users deja de fallar por entradas inv├ílidas
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+A	backend/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+A	backend/obj/Debug/net8.0/mexyapp.AssemblyInfo.cs
+A	backend/obj/Debug/net8.0/mexyapp.AssemblyInfoInputs.cache
+A	backend/obj/Debug/net8.0/mexyapp.GeneratedMSBuildEditorConfig.editorconfig
+A	backend/obj/Debug/net8.0/mexyapp.GlobalUsings.g.cs
+A	backend/obj/Debug/net8.0/mexyapp.MvcApplicationPartsAssemblyInfo.cache
+A	backend/obj/Debug/net8.0/mexyapp.assets.cache
+A	backend/obj/Debug/net8.0/mexyapp.csproj.CoreCompileInputs.cache
+A	backend/obj/Debug/net8.0/mexyapp.csproj.FileListAbsolute.txt
+A	backend/obj/Debug/net8.0/mexyapp.sourcelink.json
+A	backend/obj/Debug/net8.0/rpswa.dswa.cache.json
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+A	backend/obj/mexyapp.csproj.EntityFrameworkCore.targets
+M	backend/repomix-output.xml
+M	backend/src/api/Endpoints/UsersEndpoints.cs
+a3bb654 Limpieza de codigo
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/src/Program.cs
+ddca5a0 fix(config,db): restaurar carga exclusiva de appsettings.json por ruta y recuperar ping a la DB
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/obj/Debug/net9.0/rpswa.dswa.cache.json
+M	backend/src/Program.cs
+f28efa7 creacion de appsettings.json
+A	backend/.vs/mexyapp/DesignTimeBuild/.dtbcache.v2
+A	backend/.vs/mexyapp/v17/.suo
+A	backend/appsettings.json
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+A	backend/repomix-output.xml
+a48377f Project cleanning
+D	backend/Migrations/20251228151153_UsersRoles_NavigationFix.Designer.cs
+D	backend/Migrations/20251228151153_UsersRoles_NavigationFix.cs
+D	backend/Migrations/MexyContextModelSnapshot.cs
+D	backend/appsettings.json
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+D	backend/sql/init.sql
+8ae6526 Migraci├│n de endpoint y actualizaci├│n a EF Core 9 con mapeo de roles
+M	backend/.gitignore
+R090	backend/Migrations/20251227222339_InitUsersAndUserRoles.Designer.cs	backend/Migrations/20251228151153_UsersRoles_NavigationFix.Designer.cs
+R096	backend/Migrations/20251227222339_InitUsersAndUserRoles.cs	backend/Migrations/20251228151153_UsersRoles_NavigationFix.cs
+M	backend/Migrations/MexyContextModelSnapshot.cs
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+D	backend/combined_repomix.txt
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.csproj.CoreCompileInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+D	backend/repomix-output.xml
+M	backend/src/Infrastructure/Entities/User.cs
+M	backend/src/Infrastructure/MexyContextDb.cs
+A	backend/src/api/Contracts/CreateUserRequest.cs
+A	backend/src/api/Contracts/UserResponse.cs.cs
+A	backend/src/api/Contracts/folderinformation.md
+A	backend/src/api/Endpoints/UsersEndpoints.cs
+ef3999e Definicion de contratos en user
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/src/Program.cs
+e15e595 creacion de carpeta api y documentacion de su uso
+A	backend/src/api/documentacion.md
+e467a2d Eliminacion poco redodante de _Roles en User.cs
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.csproj.CoreCompileInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+A	backend/repomix-output.xml
+M	backend/src/Infrastructure/Entities/User.cs
+M	backend/src/Program.cs
+9840a71 Establecimiento correcto de gitignore
+M	backend/.gitignore
+A	backend/.vscode/settings.json
+D	backend/WeatherForecast.cs
+M	backend/bin/Debug/net9.0/mexyapp.dll
+M	backend/bin/Debug/net9.0/mexyapp.exe
+M	backend/bin/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/apphost.exe
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+M	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.GeneratedMSBuildEditorConfig.editorconfig
+M	backend/obj/Debug/net9.0/mexyapp.assets.cache
+M	backend/obj/Debug/net9.0/mexyapp.csproj.CoreCompileInputs.cache
+M	backend/obj/Debug/net9.0/mexyapp.csproj.FileListAbsolute.txt
+M	backend/obj/Debug/net9.0/mexyapp.dll
+M	backend/obj/Debug/net9.0/mexyapp.genruntimeconfig.cache
+M	backend/obj/Debug/net9.0/mexyapp.pdb
+M	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+M	backend/obj/Debug/net9.0/ref/mexyapp.dll
+M	backend/obj/Debug/net9.0/refint/mexyapp.dll
+M	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/obj/Debug/net9.0/rpswa.dswa.cache.json
+M	backend/obj/mexyapp.csproj.nuget.dgspec.json
+M	backend/obj/project.assets.json
+M	backend/obj/project.nuget.cache
+D	backend/repomix-output.xml
+8b998bd Refactorizacion y correcion de nombre
+A	backend/.gitignore
+R100	backend/mextyapp/Migrations/20251227222339_InitUsersAndUserRoles.Designer.cs	backend/Migrations/20251227222339_InitUsersAndUserRoles.Designer.cs
+R100	backend/mextyapp/Migrations/20251227222339_InitUsersAndUserRoles.cs	backend/Migrations/20251227222339_InitUsersAndUserRoles.cs
+R100	backend/mextyapp/Migrations/MexyContextModelSnapshot.cs	backend/Migrations/MexyContextModelSnapshot.cs
+R100	backend/mextyapp/Properties/launchSettings.json	backend/Properties/launchSettings.json
+R100	backend/mextyapp/WeatherForecast.cs	backend/WeatherForecast.cs
+R100	backend/mextyapp/appsettings.Development.json	backend/appsettings.Development.json
+R100	backend/mextyapp/appsettings.json	backend/appsettings.json
+R100	backend/mextyapp/bin/Debug/net9.0/BCrypt.Net-Next.dll	backend/bin/Debug/net9.0/BCrypt.Net-Next.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Humanizer.dll	backend/bin/Debug/net9.0/Humanizer.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll	backend/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll	backend/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Build.Locator.dll	backend/bin/Debug/net9.0/Microsoft.Build.Locator.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll	backend/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll	backend/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Design.dll	backend/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Design.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll	backend/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll	backend/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Options.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll	backend/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Microsoft.OpenApi.dll	backend/bin/Debug/net9.0/Microsoft.OpenApi.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Mono.TextTemplating.dll	backend/bin/Debug/net9.0/Mono.TextTemplating.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll	backend/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+R100	backend/mextyapp/bin/Debug/net9.0/Npgsql.dll	backend/bin/Debug/net9.0/Npgsql.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.CodeDom.dll	backend/bin/Debug/net9.0/System.CodeDom.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.Composition.AttributedModel.dll	backend/bin/Debug/net9.0/System.Composition.AttributedModel.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.Composition.Convention.dll	backend/bin/Debug/net9.0/System.Composition.Convention.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.Composition.Hosting.dll	backend/bin/Debug/net9.0/System.Composition.Hosting.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.Composition.Runtime.dll	backend/bin/Debug/net9.0/System.Composition.Runtime.dll
+R100	backend/mextyapp/bin/Debug/net9.0/System.Composition.TypedParts.dll	backend/bin/Debug/net9.0/System.Composition.TypedParts.dll
+R100	backend/mextyapp/bin/Debug/net9.0/appsettings.Development.json	backend/bin/Debug/net9.0/appsettings.Development.json
+R100	backend/mextyapp/bin/Debug/net9.0/appsettings.json	backend/bin/Debug/net9.0/appsettings.json
+R100	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/mextyapp.deps.json	backend/bin/Debug/net9.0/mextyapp.deps.json
+A	backend/bin/Debug/net9.0/mextyapp.dll
+R099	backend/mextyapp/bin/Debug/net9.0/mextyapp.exe	backend/bin/Debug/net9.0/mextyapp.exe
+R072	backend/mextyapp/bin/Debug/net9.0/mextyapp.pdb	backend/bin/Debug/net9.0/mextyapp.pdb
+R100	backend/mextyapp/bin/Debug/net9.0/mextyapp.runtimeconfig.json	backend/bin/Debug/net9.0/mextyapp.runtimeconfig.json
+R100	backend/mextyapp/bin/Debug/net9.0/mextyapp.staticwebassets.endpoints.json	backend/bin/Debug/net9.0/mextyapp.staticwebassets.endpoints.json
+A	backend/bin/Debug/net9.0/mexyapp.deps.json
+A	backend/bin/Debug/net9.0/mexyapp.dll
+A	backend/bin/Debug/net9.0/mexyapp.exe
+A	backend/bin/Debug/net9.0/mexyapp.pdb
+A	backend/bin/Debug/net9.0/mexyapp.runtimeconfig.json
+R100	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.endpoints.json	backend/bin/Debug/net9.0/mexyapp.staticwebassets.endpoints.json
+R100	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll	backend/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll	backend/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll	backend/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll	backend/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+R100	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll	backend/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/BCrypt.Net-Next.dll
+A	backend/bin/Release/net9.0/Humanizer.dll
+A	backend/bin/Release/net9.0/Microsoft.AspNetCore.OpenApi.dll
+A	backend/bin/Release/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
+A	backend/bin/Release/net9.0/Microsoft.Build.Locator.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.CSharp.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.Workspaces.dll
+A	backend/bin/Release/net9.0/Microsoft.CodeAnalysis.dll
+A	backend/bin/Release/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+A	backend/bin/Release/net9.0/Microsoft.EntityFrameworkCore.Design.dll
+A	backend/bin/Release/net9.0/Microsoft.EntityFrameworkCore.Relational.dll
+A	backend/bin/Release/net9.0/Microsoft.EntityFrameworkCore.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Caching.Memory.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.DependencyInjection.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.DependencyModel.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Logging.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Options.dll
+A	backend/bin/Release/net9.0/Microsoft.Extensions.Primitives.dll
+A	backend/bin/Release/net9.0/Microsoft.OpenApi.dll
+A	backend/bin/Release/net9.0/Mono.TextTemplating.dll
+A	backend/bin/Release/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+A	backend/bin/Release/net9.0/Npgsql.dll
+A	backend/bin/Release/net9.0/System.CodeDom.dll
+A	backend/bin/Release/net9.0/System.Composition.AttributedModel.dll
+A	backend/bin/Release/net9.0/System.Composition.Convention.dll
+A	backend/bin/Release/net9.0/System.Composition.Hosting.dll
+A	backend/bin/Release/net9.0/System.Composition.Runtime.dll
+A	backend/bin/Release/net9.0/System.Composition.TypedParts.dll
+A	backend/bin/Release/net9.0/appsettings.Development.json
+A	backend/bin/Release/net9.0/appsettings.json
+A	backend/bin/Release/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/de/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/es/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/fr/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/it/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ja/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ko/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/mexyapp.deps.json
+A	backend/bin/Release/net9.0/mexyapp.dll
+A	backend/bin/Release/net9.0/mexyapp.exe
+A	backend/bin/Release/net9.0/mexyapp.pdb
+A	backend/bin/Release/net9.0/mexyapp.runtimeconfig.json
+A	backend/bin/Release/net9.0/mexyapp.staticwebassets.endpoints.json
+A	backend/bin/Release/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/pl/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/ru/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/tr/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+A	backend/bin/Release/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/bin/Release/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/bin/Release/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/bin/Release/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+R100	backend/mextyapp/combined_repomix.txt	backend/combined_repomix.txt
+A	backend/documentacion/PlugAndPlay.md
+A	backend/documentacion/UsoEFCore.md
+D	backend/mextyapp/Controllers/WeatherForecastController.cs
+D	backend/mextyapp/bin/Debug/net9.0/mextyapp.dll
+D	backend/mextyapp/mextyapp.sln
+D	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+D	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+D	backend/mextyapp/obj/Debug/net9.0/mextyapp.dll
+D	backend/mextyapp/obj/Debug/net9.0/mextyapp.genruntimeconfig.cache
+D	backend/mextyapp/obj/Debug/net9.0/mextyapp.sourcelink.json
+D	backend/mextyapp/obj/Debug/net9.0/ref/mextyapp.dll
+D	backend/mextyapp/obj/Debug/net9.0/refint/mextyapp.dll
+D	backend/mextyapp/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+D	backend/mextyapp/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+D	backend/mextyapp/obj/Debug/net9.0/rpswa.dswa.cache.json
+D	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.json
+D	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.json.cache
+R100	backend/mextyapp/mextyapp.csproj	backend/mexyapp.csproj
+R100	backend/mextyapp/mextyapp.csproj.user	backend/mexyapp.csproj.user
+R100	backend/mextyapp/mextyapp.http	backend/mexyapp.http
+A	backend/mexyapp.sln
+R100	backend/mextyapp/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs	backend/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+R099	backend/mextyapp/obj/Debug/net9.0/apphost.exe	backend/obj/Debug/net9.0/apphost.exe
+R088	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs	backend/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+A	backend/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+R098	backend/mextyapp/obj/Debug/net9.0/mextyapp.GeneratedMSBuildEditorConfig.editorconfig	backend/obj/Debug/net9.0/mextyapp.GeneratedMSBuildEditorConfig.editorconfig
+R100	backend/mextyapp/obj/Debug/net9.0/mextyapp.GlobalUsings.g.cs	backend/obj/Debug/net9.0/mextyapp.GlobalUsings.g.cs
+R100	backend/mextyapp/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cache	backend/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cache
+R100	backend/mextyapp/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cs	backend/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cs
+R099	backend/mextyapp/obj/Debug/net9.0/mextyapp.assets.cache	backend/obj/Debug/net9.0/mextyapp.assets.cache
+R100	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.AssemblyReference.cache	backend/obj/Debug/net9.0/mextyapp.csproj.AssemblyReference.cache
+A	backend/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+R050	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt	backend/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt
+R100	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.Up2Date	backend/obj/Debug/net9.0/mextyapp.csproj.Up2Date
+A	backend/obj/Debug/net9.0/mextyapp.dll
+A	backend/obj/Debug/net9.0/mextyapp.genruntimeconfig.cache
+R072	backend/mextyapp/obj/Debug/net9.0/mextyapp.pdb	backend/obj/Debug/net9.0/mextyapp.pdb
+A	backend/obj/Debug/net9.0/mextyapp.sourcelink.json
+A	backend/obj/Debug/net9.0/mexyapp.AssemblyInfo.cs
+A	backend/obj/Debug/net9.0/mexyapp.AssemblyInfoInputs.cache
+A	backend/obj/Debug/net9.0/mexyapp.GeneratedMSBuildEditorConfig.editorconfig
+A	backend/obj/Debug/net9.0/mexyapp.GlobalUsings.g.cs
+R100	backend/mextyapp/obj/Debug/net9.0/staticwebassets.references.upToDateCheck.txt	backend/obj/Debug/net9.0/mexyapp.MvcApplicationPartsAssemblyInfo.cache
+A	backend/obj/Debug/net9.0/mexyapp.MvcApplicationPartsAssemblyInfo.cs
+A	backend/obj/Debug/net9.0/mexyapp.assets.cache
+A	backend/obj/Debug/net9.0/mexyapp.csproj.AssemblyReference.cache
+A	backend/obj/Debug/net9.0/mexyapp.csproj.CoreCompileInputs.cache
+A	backend/obj/Debug/net9.0/mexyapp.csproj.FileListAbsolute.txt
+A	backend/obj/Debug/net9.0/mexyapp.dll
+A	backend/obj/Debug/net9.0/mexyapp.genruntimeconfig.cache
+A	backend/obj/Debug/net9.0/mexyapp.pdb
+A	backend/obj/Debug/net9.0/mexyapp.sourcelink.json
+A	backend/obj/Debug/net9.0/ref/mextyapp.dll
+A	backend/obj/Debug/net9.0/ref/mexyapp.dll
+A	backend/obj/Debug/net9.0/refint/mextyapp.dll
+A	backend/obj/Debug/net9.0/refint/mexyapp.dll
+A	backend/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+A	backend/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+A	backend/obj/Debug/net9.0/rpswa.dswa.cache.json
+A	backend/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+A	backend/obj/Debug/net9.0/staticwebassets.build.json
+A	backend/obj/Debug/net9.0/staticwebassets.build.json.cache
+R100	backend/mextyapp/obj/Debug/net9.0/staticwebassets.removed.txt	backend/obj/Debug/net9.0/staticwebassets.references.upToDateCheck.txt
+A	backend/obj/Debug/net9.0/staticwebassets.removed.txt
+A	backend/obj/Release/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+A	backend/obj/Release/net9.0/apphost.exe
+A	backend/obj/Release/net9.0/mexyapp.AssemblyInfo.cs
+A	backend/obj/Release/net9.0/mexyapp.AssemblyInfoInputs.cache
+A	backend/obj/Release/net9.0/mexyapp.GeneratedMSBuildEditorConfig.editorconfig
+A	backend/obj/Release/net9.0/mexyapp.GlobalUsings.g.cs
+A	backend/obj/Release/net9.0/mexyapp.MvcApplicationPartsAssemblyInfo.cache
+A	backend/obj/Release/net9.0/mexyapp.MvcApplicationPartsAssemblyInfo.cs
+A	backend/obj/Release/net9.0/mexyapp.assets.cache
+A	backend/obj/Release/net9.0/mexyapp.csproj.AssemblyReference.cache
+A	backend/obj/Release/net9.0/mexyapp.csproj.CoreCompileInputs.cache
+A	backend/obj/Release/net9.0/mexyapp.csproj.FileListAbsolute.txt
+A	backend/obj/Release/net9.0/mexyapp.csproj.Up2Date
+A	backend/obj/Release/net9.0/mexyapp.dll
+A	backend/obj/Release/net9.0/mexyapp.genruntimeconfig.cache
+A	backend/obj/Release/net9.0/mexyapp.pdb
+A	backend/obj/Release/net9.0/mexyapp.sourcelink.json
+A	backend/obj/Release/net9.0/ref/mexyapp.dll
+A	backend/obj/Release/net9.0/refint/mexyapp.dll
+A	backend/obj/Release/net9.0/rjsmcshtml.dswa.cache.json
+A	backend/obj/Release/net9.0/rjsmrazor.dswa.cache.json
+A	backend/obj/Release/net9.0/rpswa.dswa.cache.json
+A	backend/obj/Release/net9.0/staticwebassets.build.endpoints.json
+A	backend/obj/Release/net9.0/staticwebassets.build.json
+A	backend/obj/Release/net9.0/staticwebassets.build.json.cache
+R100	backend/mextyapp/obj/mextyapp.csproj.EntityFrameworkCore.targets	backend/obj/mextyapp.csproj.EntityFrameworkCore.targets
+R092	backend/mextyapp/obj/mextyapp.csproj.nuget.dgspec.json	backend/obj/mextyapp.csproj.nuget.dgspec.json
+R100	backend/mextyapp/obj/mextyapp.csproj.nuget.g.props	backend/obj/mextyapp.csproj.nuget.g.props
+R100	backend/mextyapp/obj/mextyapp.csproj.nuget.g.targets	backend/obj/mextyapp.csproj.nuget.g.targets
+A	backend/obj/mexyapp.csproj.nuget.dgspec.json
+A	backend/obj/mexyapp.csproj.nuget.g.props
+A	backend/obj/mexyapp.csproj.nuget.g.targets
+R099	backend/mextyapp/obj/project.assets.json	backend/obj/project.assets.json
+R098	backend/mextyapp/obj/project.nuget.cache	backend/obj/project.nuget.cache
+R100	backend/mextyapp/repomix-output.xml	backend/repomix-output.xml
+R100	backend/mextyapp/sql/init.sql	backend/sql/init.sql
+R100	backend/mextyapp/api/Infrastructure/Entities/User.cs	backend/src/Infrastructure/Entities/User.cs
+R100	backend/mextyapp/api/Infrastructure/Entities/UserRole.cs	backend/src/Infrastructure/Entities/UserRole.cs
+R100	backend/mextyapp/api/Infrastructure/MexyContextDb.cs	backend/src/Infrastructure/MexyContextDb.cs
+R100	backend/mextyapp/api/Program.cs	backend/src/Program.cs
+A	frontend/.dart_tool/dartpad/web_plugin_registrant.dart
+A	frontend/.dart_tool/package_config.json
+A	frontend/.dart_tool/package_config_subset
+A	frontend/.dart_tool/package_graph.json
+A	frontend/.dart_tool/version
+R100	frontend/mextyapp/.gitignore	frontend/.gitignore
+R100	frontend/mextyapp/.metadata	frontend/.metadata
+A	frontend/README.md
+A	frontend/analysis_options.yaml
+R100	frontend/mextyapp/android/.gitignore	frontend/android/.gitignore
+R093	frontend/mextyapp/android/app/build.gradle.kts	frontend/android/app/build.gradle.kts
+R100	frontend/mextyapp/android/app/src/debug/AndroidManifest.xml	frontend/android/app/src/debug/AndroidManifest.xml
+R098	frontend/mextyapp/android/app/src/main/AndroidManifest.xml	frontend/android/app/src/main/AndroidManifest.xml
+A	frontend/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+R076	frontend/mextyapp/android/app/src/main/kotlin/com/example/mextyapp/MainActivity.kt	frontend/android/app/src/main/kotlin/com/example/mexyapp/MainActivity.kt
+R100	frontend/mextyapp/android/app/src/main/res/drawable-v21/launch_background.xml	frontend/android/app/src/main/res/drawable-v21/launch_background.xml
+R100	frontend/mextyapp/android/app/src/main/res/drawable/launch_background.xml	frontend/android/app/src/main/res/drawable/launch_background.xml
+R100	frontend/mextyapp/android/app/src/main/res/mipmap-hdpi/ic_launcher.png	frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+R100	frontend/mextyapp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png	frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+R100	frontend/mextyapp/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png	frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+R100	frontend/mextyapp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png	frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+R100	frontend/mextyapp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png	frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+R100	frontend/mextyapp/android/app/src/main/res/values-night/styles.xml	frontend/android/app/src/main/res/values-night/styles.xml
+R100	frontend/mextyapp/android/app/src/main/res/values/styles.xml	frontend/android/app/src/main/res/values/styles.xml
+R100	frontend/mextyapp/android/app/src/profile/AndroidManifest.xml	frontend/android/app/src/profile/AndroidManifest.xml
+R100	frontend/mextyapp/android/build.gradle.kts	frontend/android/build.gradle.kts
+R100	frontend/mextyapp/android/gradle.properties	frontend/android/gradle.properties
+A	frontend/android/gradle/wrapper/gradle-wrapper.jar
+R100	frontend/mextyapp/android/gradle/wrapper/gradle-wrapper.properties	frontend/android/gradle/wrapper/gradle-wrapper.properties
+A	frontend/android/gradlew
+A	frontend/android/gradlew.bat
+A	frontend/android/local.properties
+A	frontend/android/mexyapp_android.iml
+R100	frontend/mextyapp/android/settings.gradle.kts	frontend/android/settings.gradle.kts
+R100	frontend/mextyapp/ios/.gitignore	frontend/ios/.gitignore
+R100	frontend/mextyapp/ios/Flutter/AppFrameworkInfo.plist	frontend/ios/Flutter/AppFrameworkInfo.plist
+R100	frontend/mextyapp/ios/Flutter/Debug.xcconfig	frontend/ios/Flutter/Debug.xcconfig
+A	frontend/ios/Flutter/Generated.xcconfig
+R100	frontend/mextyapp/ios/Flutter/Release.xcconfig	frontend/ios/Flutter/Release.xcconfig
+A	frontend/ios/Flutter/ephemeral/flutter_lldb_helper.py
+A	frontend/ios/Flutter/ephemeral/flutter_lldbinit
+A	frontend/ios/Flutter/flutter_export_environment.sh
+R098	frontend/mextyapp/ios/Runner.xcodeproj/project.pbxproj	frontend/ios/Runner.xcodeproj/project.pbxproj
+R100	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata	frontend/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+R100	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist	frontend/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+R100	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings	frontend/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+R100	frontend/mextyapp/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme	frontend/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+R100	frontend/mextyapp/ios/Runner.xcworkspace/contents.xcworkspacedata	frontend/ios/Runner.xcworkspace/contents.xcworkspacedata
+R100	frontend/mextyapp/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist	frontend/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+R100	frontend/mextyapp/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings	frontend/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+R100	frontend/mextyapp/ios/Runner/AppDelegate.swift	frontend/ios/Runner/AppDelegate.swift
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png	frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json	frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png	frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png	frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png	frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png
+R100	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md	frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+R100	frontend/mextyapp/ios/Runner/Base.lproj/LaunchScreen.storyboard	frontend/ios/Runner/Base.lproj/LaunchScreen.storyboard
+R100	frontend/mextyapp/ios/Runner/Base.lproj/Main.storyboard	frontend/ios/Runner/Base.lproj/Main.storyboard
+A	frontend/ios/Runner/GeneratedPluginRegistrant.h
+A	frontend/ios/Runner/GeneratedPluginRegistrant.m
+R096	frontend/mextyapp/ios/Runner/Info.plist	frontend/ios/Runner/Info.plist
+R100	frontend/mextyapp/ios/Runner/Runner-Bridging-Header.h	frontend/ios/Runner/Runner-Bridging-Header.h
+R100	frontend/mextyapp/ios/RunnerTests/RunnerTests.swift	frontend/ios/RunnerTests/RunnerTests.swift
+A	frontend/lib/main.dart
+R100	frontend/mextyapp/linux/.gitignore	frontend/linux/.gitignore
+R098	frontend/mextyapp/linux/CMakeLists.txt	frontend/linux/CMakeLists.txt
+R100	frontend/mextyapp/linux/flutter/CMakeLists.txt	frontend/linux/flutter/CMakeLists.txt
+R100	frontend/mextyapp/linux/flutter/generated_plugin_registrant.cc	frontend/linux/flutter/generated_plugin_registrant.cc
+R100	frontend/mextyapp/linux/flutter/generated_plugin_registrant.h	frontend/linux/flutter/generated_plugin_registrant.h
+R100	frontend/mextyapp/linux/flutter/generated_plugins.cmake	frontend/linux/flutter/generated_plugins.cmake
+R100	frontend/mextyapp/linux/runner/CMakeLists.txt	frontend/linux/runner/CMakeLists.txt
+R100	frontend/mextyapp/linux/runner/main.cc	frontend/linux/runner/main.cc
+R097	frontend/mextyapp/linux/runner/my_application.cc	frontend/linux/runner/my_application.cc
+R100	frontend/mextyapp/linux/runner/my_application.h	frontend/linux/runner/my_application.h
+R100	frontend/mextyapp/macos/.gitignore	frontend/macos/.gitignore
+R100	frontend/mextyapp/macos/Flutter/Flutter-Debug.xcconfig	frontend/macos/Flutter/Flutter-Debug.xcconfig
+R100	frontend/mextyapp/macos/Flutter/Flutter-Release.xcconfig	frontend/macos/Flutter/Flutter-Release.xcconfig
+R100	frontend/mextyapp/macos/Flutter/GeneratedPluginRegistrant.swift	frontend/macos/Flutter/GeneratedPluginRegistrant.swift
+A	frontend/macos/Flutter/ephemeral/Flutter-Generated.xcconfig
+A	frontend/macos/Flutter/ephemeral/flutter_export_environment.sh
+R096	frontend/mextyapp/macos/Runner.xcodeproj/project.pbxproj	frontend/macos/Runner.xcodeproj/project.pbxproj
+R100	frontend/mextyapp/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist	frontend/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+R095	frontend/mextyapp/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme	frontend/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+R100	frontend/mextyapp/macos/Runner.xcworkspace/contents.xcworkspacedata	frontend/macos/Runner.xcworkspace/contents.xcworkspacedata
+R100	frontend/mextyapp/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist	frontend/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+R100	frontend/mextyapp/macos/Runner/AppDelegate.swift	frontend/macos/Runner/AppDelegate.swift
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png
+R100	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png	frontend/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png
+R100	frontend/mextyapp/macos/Runner/Base.lproj/MainMenu.xib	frontend/macos/Runner/Base.lproj/MainMenu.xib
+R087	frontend/mextyapp/macos/Runner/Configs/AppInfo.xcconfig	frontend/macos/Runner/Configs/AppInfo.xcconfig
+R100	frontend/mextyapp/macos/Runner/Configs/Debug.xcconfig	frontend/macos/Runner/Configs/Debug.xcconfig
+R100	frontend/mextyapp/macos/Runner/Configs/Release.xcconfig	frontend/macos/Runner/Configs/Release.xcconfig
+R100	frontend/mextyapp/macos/Runner/Configs/Warnings.xcconfig	frontend/macos/Runner/Configs/Warnings.xcconfig
+R100	frontend/mextyapp/macos/Runner/DebugProfile.entitlements	frontend/macos/Runner/DebugProfile.entitlements
+R100	frontend/mextyapp/macos/Runner/Info.plist	frontend/macos/Runner/Info.plist
+R100	frontend/mextyapp/macos/Runner/MainFlutterWindow.swift	frontend/macos/Runner/MainFlutterWindow.swift
+R100	frontend/mextyapp/macos/Runner/Release.entitlements	frontend/macos/Runner/Release.entitlements
+R100	frontend/mextyapp/macos/RunnerTests/RunnerTests.swift	frontend/macos/RunnerTests/RunnerTests.swift
+D	frontend/mextyapp/README.md
+D	frontend/mextyapp/analysis_options.yaml
+D	frontend/mextyapp/lib/main.dart
+D	frontend/mextyapp/pubspec.yaml
+A	frontend/mexyapp.iml
+R096	frontend/mextyapp/pubspec.lock	frontend/pubspec.lock
+A	frontend/pubspec.yaml
+A	frontend/test/widget_test.dart
+R100	frontend/mextyapp/web/favicon.png	frontend/web/favicon.png
+R100	frontend/mextyapp/web/icons/Icon-192.png	frontend/web/icons/Icon-192.png
+R100	frontend/mextyapp/web/icons/Icon-512.png	frontend/web/icons/Icon-512.png
+R100	frontend/mextyapp/web/icons/Icon-maskable-192.png	frontend/web/icons/Icon-maskable-192.png
+R100	frontend/mextyapp/web/icons/Icon-maskable-512.png	frontend/web/icons/Icon-maskable-512.png
+R092	frontend/mextyapp/web/index.html	frontend/web/index.html
+R094	frontend/mextyapp/web/manifest.json	frontend/web/manifest.json
+R100	frontend/mextyapp/windows/.gitignore	frontend/windows/.gitignore
+R098	frontend/mextyapp/windows/CMakeLists.txt	frontend/windows/CMakeLists.txt
+R100	frontend/mextyapp/windows/flutter/CMakeLists.txt	frontend/windows/flutter/CMakeLists.txt
+R100	frontend/mextyapp/windows/flutter/generated_plugin_registrant.cc	frontend/windows/flutter/generated_plugin_registrant.cc
+R100	frontend/mextyapp/windows/flutter/generated_plugin_registrant.h	frontend/windows/flutter/generated_plugin_registrant.h
+R100	frontend/mextyapp/windows/flutter/generated_plugins.cmake	frontend/windows/flutter/generated_plugins.cmake
+R100	frontend/mextyapp/windows/runner/CMakeLists.txt	frontend/windows/runner/CMakeLists.txt
+R093	frontend/mextyapp/windows/runner/Runner.rc	frontend/windows/runner/Runner.rc
+R100	frontend/mextyapp/windows/runner/flutter_window.cpp	frontend/windows/runner/flutter_window.cpp
+R100	frontend/mextyapp/windows/runner/flutter_window.h	frontend/windows/runner/flutter_window.h
+R095	frontend/mextyapp/windows/runner/main.cpp	frontend/windows/runner/main.cpp
+R100	frontend/mextyapp/windows/runner/resource.h	frontend/windows/runner/resource.h
+R100	frontend/mextyapp/windows/runner/resources/app_icon.ico	frontend/windows/runner/resources/app_icon.ico
+R100	frontend/mextyapp/windows/runner/runner.exe.manifest	frontend/windows/runner/runner.exe.manifest
+R100	frontend/mextyapp/windows/runner/utils.cpp	frontend/windows/runner/utils.cpp
+R100	frontend/mextyapp/windows/runner/utils.h	frontend/windows/runner/utils.h
+R100	frontend/mextyapp/windows/runner/win32_window.cpp	frontend/windows/runner/win32_window.cpp
+R100	frontend/mextyapp/windows/runner/win32_window.h	frontend/windows/runner/win32_window.h
+A	mexyapp.sln
+11fc0dc Ping a base de datos exitoso
+D	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.metadata.v9.bin
+D	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.projects.v9.bin
+D	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.strings.v9.bin
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db
+D	backend/mextyapp/.vs/mextyapp/DesignTimeBuild/.dtbcache.v2
+D	backend/mextyapp/.vs/mextyapp/FileContentIndex/2c164b8b-482f-49cb-8c5c-2e69b8946a1e.vsidx
+D	backend/mextyapp/.vs/mextyapp/FileContentIndex/68ee463c-c588-4bce-9c37-aef52c12e468.vsidx
+D	backend/mextyapp/.vs/mextyapp/v17/.futdcache.v2
+D	backend/mextyapp/.vs/mextyapp/v17/.suo
+D	backend/mextyapp/.vs/mextyapp/v17/DocumentLayout.backup.json
+D	backend/mextyapp/.vs/mextyapp/v17/DocumentLayout.json
+A	backend/mextyapp/Migrations/20251227222339_InitUsersAndUserRoles.Designer.cs
+A	backend/mextyapp/Migrations/20251227222339_InitUsersAndUserRoles.cs
+A	backend/mextyapp/Migrations/MexyContextModelSnapshot.cs
+A	backend/mextyapp/api/Infrastructure/Entities/User.cs
+A	backend/mextyapp/api/Infrastructure/Entities/UserRole.cs
+A	backend/mextyapp/api/Infrastructure/MexyContextDb.cs
+M	backend/mextyapp/api/Program.cs
+A	backend/mextyapp/bin/Debug/net9.0/BCrypt.Net-Next.dll
+A	backend/mextyapp/bin/Debug/net9.0/Humanizer.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Build.Locator.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Design.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+A	backend/mextyapp/bin/Debug/net9.0/Mono.TextTemplating.dll
+A	backend/mextyapp/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+A	backend/mextyapp/bin/Debug/net9.0/Npgsql.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.CodeDom.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.Composition.AttributedModel.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.Composition.Convention.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.Composition.Hosting.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.Composition.Runtime.dll
+A	backend/mextyapp/bin/Debug/net9.0/System.Composition.TypedParts.dll
+A	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.resources.dll
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.deps.json
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.exe
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.pdb
+A	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+A	backend/mextyapp/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+A	backend/mextyapp/combined_repomix.txt
+M	backend/mextyapp/obj/Debug/net9.0/apphost.exe
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.pdb
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.sourcelink.json
+M	backend/mextyapp/obj/Debug/net9.0/ref/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/refint/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/mextyapp/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+A	backend/mextyapp/obj/mextyapp.csproj.EntityFrameworkCore.targets
+A	backend/mextyapp/repomix-output.xml
+A	backend/mextyapp/sql/init.sql
+b07d780 refactorizacion y creacion de cargadores de bases de datos
+D	backend/mextyapp/api/Data/AppDbContext.cs
+D	backend/mextyapp/api/Domain/Entities/User.cs
+M	backend/mextyapp/api/Program.cs
+M	backend/mextyapp/appsettings.json
+M	backend/mextyapp/bin/Debug/net9.0/appsettings.json
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.deps.json
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.exe
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.pdb
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.runtimeconfig.json
+M	backend/mextyapp/mextyapp.csproj
+M	backend/mextyapp/obj/Debug/net9.0/apphost.exe
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.assets.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.AssemblyReference.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.genruntimeconfig.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.pdb
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.sourcelink.json
+M	backend/mextyapp/obj/Debug/net9.0/ref/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/refint/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/mextyapp/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/mextyapp/obj/Debug/net9.0/rpswa.dswa.cache.json
+M	backend/mextyapp/obj/mextyapp.csproj.nuget.dgspec.json
+M	backend/mextyapp/obj/mextyapp.csproj.nuget.g.props
+M	backend/mextyapp/obj/project.assets.json
+M	backend/mextyapp/obj/project.nuget.cache
+0816757 instalacion de paquetes y documentacion de nececidades
+A	backend/mextyapp/api/Data/AppDbContext.cs
+M	backend/mextyapp/api/Domain/Entities/User.cs
+M	backend/mextyapp/api/Program.cs
+M	backend/mextyapp/mextyapp.csproj
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.GeneratedMSBuildEditorConfig.editorconfig
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.assets.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.AssemblyReference.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.sourcelink.json
+M	backend/mextyapp/obj/Debug/net9.0/rpswa.dswa.cache.json
+M	backend/mextyapp/obj/mextyapp.csproj.nuget.dgspec.json
+M	backend/mextyapp/obj/mextyapp.csproj.nuget.g.props
+M	backend/mextyapp/obj/mextyapp.csproj.nuget.g.targets
+M	backend/mextyapp/obj/project.assets.json
+M	backend/mextyapp/obj/project.nuget.cache
+797df8b preparacion de proyecto para conexion a dbremota
+M	backend/mextyapp/appsettings.json
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+fbf9ac1 Declaracion y explicacion de User.cs
+M	backend/mextyapp/api/Domain/Entities/User.cs
+D	backend/mextyapp/api/Domain/Enums/RoleName.cs
+a23ae2e Declaracion de roles
+A	backend/mextyapp/api/Domain/Entities/User.cs
+A	backend/mextyapp/api/Domain/Enums/RoleName.cs
+8a69c23 reparacion de documento y renombre de este
+D	backend/documentacion/BACKEND_DOMAIN_SPEC.docx
+A	backend/documentacion/RolesReglas.docx
+0915ce7 escritura de roles permisos y no permisos
+A	backend/documentacion/BACKEND_DOMAIN_SPEC.docx
+A	backend/documentacion/ReglasGlobales.docx
+M	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.metadata.v9.bin
+M	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.projects.v9.bin
+M	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.strings.v9.bin
+M	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db-shm
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db-wal
+M	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db-shm
+D	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db-wal
+M	backend/mextyapp/.vs/mextyapp/DesignTimeBuild/.dtbcache.v2
+A	backend/mextyapp/.vs/mextyapp/FileContentIndex/2c164b8b-482f-49cb-8c5c-2e69b8946a1e.vsidx
+A	backend/mextyapp/.vs/mextyapp/FileContentIndex/68ee463c-c588-4bce-9c37-aef52c12e468.vsidx
+D	backend/mextyapp/.vs/mextyapp/FileContentIndex/f03ce266-3709-4074-b8ce-fce6087376b4.vsidx
+M	backend/mextyapp/.vs/mextyapp/v17/.futdcache.v2
+M	backend/mextyapp/.vs/mextyapp/v17/.suo
+M	backend/mextyapp/.vs/mextyapp/v17/DocumentLayout.json
+D	backend/mextyapp/Program.cs
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.exe
+M	backend/mextyapp/bin/Debug/net9.0/mextyapp.pdb
+M	backend/mextyapp/obj/Debug/net9.0/apphost.exe
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.genruntimeconfig.cache
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.pdb
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.sourcelink.json
+M	backend/mextyapp/obj/Debug/net9.0/ref/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/refint/mextyapp.dll
+M	backend/mextyapp/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+M	backend/mextyapp/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+M	backend/mextyapp/obj/Debug/net9.0/rpswa.dswa.cache.json
+43ea8c0 Creacion de carpetas, Controllers, Services y Models para organizacion de codigo
+A	backend/mextyapp/api/Program.cs
+b5045c6 creacion de carpeta api
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db-shm
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db-wal
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db-shm
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db-wal
+M	backend/mextyapp/.vs/mextyapp/v17/.suo
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+M	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+598add0 Inicializacion
+A	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.metadata.v9.bin
+A	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.projects.v9.bin
+A	backend/mextyapp/.vs/ProjectEvaluation/mextyapp.strings.v9.bin
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/CodeChunks.db
+A	backend/mextyapp/.vs/mextyapp/CopilotIndices/17.14.794.21998/SemanticSymbols.db
+A	backend/mextyapp/.vs/mextyapp/DesignTimeBuild/.dtbcache.v2
+A	backend/mextyapp/.vs/mextyapp/FileContentIndex/f03ce266-3709-4074-b8ce-fce6087376b4.vsidx
+A	backend/mextyapp/.vs/mextyapp/v17/.futdcache.v2
+A	backend/mextyapp/.vs/mextyapp/v17/.suo
+A	backend/mextyapp/.vs/mextyapp/v17/DocumentLayout.backup.json
+A	backend/mextyapp/.vs/mextyapp/v17/DocumentLayout.json
+A	backend/mextyapp/Controllers/WeatherForecastController.cs
+A	backend/mextyapp/Program.cs
+A	backend/mextyapp/Properties/launchSettings.json
+A	backend/mextyapp/WeatherForecast.cs
+A	backend/mextyapp/appsettings.Development.json
+A	backend/mextyapp/appsettings.json
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+A	backend/mextyapp/bin/Debug/net9.0/Microsoft.OpenApi.dll
+A	backend/mextyapp/bin/Debug/net9.0/appsettings.Development.json
+A	backend/mextyapp/bin/Debug/net9.0/appsettings.json
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.deps.json
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.dll
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.exe
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.pdb
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.runtimeconfig.json
+A	backend/mextyapp/bin/Debug/net9.0/mextyapp.staticwebassets.endpoints.json
+A	backend/mextyapp/mextyapp.csproj
+A	backend/mextyapp/mextyapp.csproj.user
+A	backend/mextyapp/mextyapp.http
+A	backend/mextyapp/mextyapp.sln
+A	backend/mextyapp/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+A	backend/mextyapp/obj/Debug/net9.0/apphost.exe
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfo.cs
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.AssemblyInfoInputs.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.GeneratedMSBuildEditorConfig.editorconfig
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.GlobalUsings.g.cs
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.MvcApplicationPartsAssemblyInfo.cs
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.assets.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.AssemblyReference.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.CoreCompileInputs.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.FileListAbsolute.txt
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.csproj.Up2Date
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.dll
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.genruntimeconfig.cache
+A	backend/mextyapp/obj/Debug/net9.0/mextyapp.pdb
+A	backend/mextyapp/obj/Debug/net9.0/ref/mextyapp.dll
+A	backend/mextyapp/obj/Debug/net9.0/refint/mextyapp.dll
+A	backend/mextyapp/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+A	backend/mextyapp/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+A	backend/mextyapp/obj/Debug/net9.0/rpswa.dswa.cache.json
+A	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+A	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.json
+A	backend/mextyapp/obj/Debug/net9.0/staticwebassets.build.json.cache
+A	backend/mextyapp/obj/Debug/net9.0/staticwebassets.references.upToDateCheck.txt
+A	backend/mextyapp/obj/Debug/net9.0/staticwebassets.removed.txt
+A	backend/mextyapp/obj/mextyapp.csproj.nuget.dgspec.json
+A	backend/mextyapp/obj/mextyapp.csproj.nuget.g.props
+A	backend/mextyapp/obj/mextyapp.csproj.nuget.g.targets
+A	backend/mextyapp/obj/project.assets.json
+A	backend/mextyapp/obj/project.nuget.cache
+A	frontend/mextyapp/.gitignore
+A	frontend/mextyapp/.metadata
+A	frontend/mextyapp/README.md
+A	frontend/mextyapp/analysis_options.yaml
+A	frontend/mextyapp/android/.gitignore
+A	frontend/mextyapp/android/app/build.gradle.kts
+A	frontend/mextyapp/android/app/src/debug/AndroidManifest.xml
+A	frontend/mextyapp/android/app/src/main/AndroidManifest.xml
+A	frontend/mextyapp/android/app/src/main/kotlin/com/example/mextyapp/MainActivity.kt
+A	frontend/mextyapp/android/app/src/main/res/drawable-v21/launch_background.xml
+A	frontend/mextyapp/android/app/src/main/res/drawable/launch_background.xml
+A	frontend/mextyapp/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+A	frontend/mextyapp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+A	frontend/mextyapp/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+A	frontend/mextyapp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+A	frontend/mextyapp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+A	frontend/mextyapp/android/app/src/main/res/values-night/styles.xml
+A	frontend/mextyapp/android/app/src/main/res/values/styles.xml
+A	frontend/mextyapp/android/app/src/profile/AndroidManifest.xml
+A	frontend/mextyapp/android/build.gradle.kts
+A	frontend/mextyapp/android/gradle.properties
+A	frontend/mextyapp/android/gradle/wrapper/gradle-wrapper.properties
+A	frontend/mextyapp/android/settings.gradle.kts
+A	frontend/mextyapp/ios/.gitignore
+A	frontend/mextyapp/ios/Flutter/AppFrameworkInfo.plist
+A	frontend/mextyapp/ios/Flutter/Debug.xcconfig
+A	frontend/mextyapp/ios/Flutter/Release.xcconfig
+A	frontend/mextyapp/ios/Runner.xcodeproj/project.pbxproj
+A	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+A	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+A	frontend/mextyapp/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+A	frontend/mextyapp/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+A	frontend/mextyapp/ios/Runner.xcworkspace/contents.xcworkspacedata
+A	frontend/mextyapp/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+A	frontend/mextyapp/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+A	frontend/mextyapp/ios/Runner/AppDelegate.swift
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png
+A	frontend/mextyapp/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+A	frontend/mextyapp/ios/Runner/Base.lproj/LaunchScreen.storyboard
+A	frontend/mextyapp/ios/Runner/Base.lproj/Main.storyboard
+A	frontend/mextyapp/ios/Runner/Info.plist
+A	frontend/mextyapp/ios/Runner/Runner-Bridging-Header.h
+A	frontend/mextyapp/ios/RunnerTests/RunnerTests.swift
+A	frontend/mextyapp/lib/main.dart
+A	frontend/mextyapp/linux/.gitignore
+A	frontend/mextyapp/linux/CMakeLists.txt
+A	frontend/mextyapp/linux/flutter/CMakeLists.txt
+A	frontend/mextyapp/linux/flutter/generated_plugin_registrant.cc
+A	frontend/mextyapp/linux/flutter/generated_plugin_registrant.h
+A	frontend/mextyapp/linux/flutter/generated_plugins.cmake
+A	frontend/mextyapp/linux/runner/CMakeLists.txt
+A	frontend/mextyapp/linux/runner/main.cc
+A	frontend/mextyapp/linux/runner/my_application.cc
+A	frontend/mextyapp/linux/runner/my_application.h
+A	frontend/mextyapp/macos/.gitignore
+A	frontend/mextyapp/macos/Flutter/Flutter-Debug.xcconfig
+A	frontend/mextyapp/macos/Flutter/Flutter-Release.xcconfig
+A	frontend/mextyapp/macos/Flutter/GeneratedPluginRegistrant.swift
+A	frontend/mextyapp/macos/Runner.xcodeproj/project.pbxproj
+A	frontend/mextyapp/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+A	frontend/mextyapp/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+A	frontend/mextyapp/macos/Runner.xcworkspace/contents.xcworkspacedata
+A	frontend/mextyapp/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+A	frontend/mextyapp/macos/Runner/AppDelegate.swift
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png
+A	frontend/mextyapp/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png
+A	frontend/mextyapp/macos/Runner/Base.lproj/MainMenu.xib
+A	frontend/mextyapp/macos/Runner/Configs/AppInfo.xcconfig
+A	frontend/mextyapp/macos/Runner/Configs/Debug.xcconfig
+A	frontend/mextyapp/macos/Runner/Configs/Release.xcconfig
+A	frontend/mextyapp/macos/Runner/Configs/Warnings.xcconfig
+A	frontend/mextyapp/macos/Runner/DebugProfile.entitlements
+A	frontend/mextyapp/macos/Runner/Info.plist
+A	frontend/mextyapp/macos/Runner/MainFlutterWindow.swift
+A	frontend/mextyapp/macos/Runner/Release.entitlements
+A	frontend/mextyapp/macos/RunnerTests/RunnerTests.swift
+A	frontend/mextyapp/pubspec.lock
+A	frontend/mextyapp/pubspec.yaml
+A	frontend/mextyapp/web/favicon.png
+A	frontend/mextyapp/web/icons/Icon-192.png
+A	frontend/mextyapp/web/icons/Icon-512.png
+A	frontend/mextyapp/web/icons/Icon-maskable-192.png
+A	frontend/mextyapp/web/icons/Icon-maskable-512.png
+A	frontend/mextyapp/web/index.html
+A	frontend/mextyapp/web/manifest.json
+A	frontend/mextyapp/windows/.gitignore
+A	frontend/mextyapp/windows/CMakeLists.txt
+A	frontend/mextyapp/windows/flutter/CMakeLists.txt
+A	frontend/mextyapp/windows/flutter/generated_plugin_registrant.cc
+A	frontend/mextyapp/windows/flutter/generated_plugin_registrant.h
+A	frontend/mextyapp/windows/flutter/generated_plugins.cmake
+A	frontend/mextyapp/windows/runner/CMakeLists.txt
+A	frontend/mextyapp/windows/runner/Runner.rc
+A	frontend/mextyapp/windows/runner/flutter_window.cpp
+A	frontend/mextyapp/windows/runner/flutter_window.h
+A	frontend/mextyapp/windows/runner/main.cpp
+A	frontend/mextyapp/windows/runner/resource.h
+A	frontend/mextyapp/windows/runner/resources/app_icon.ico
+A	frontend/mextyapp/windows/runner/runner.exe.manifest
+A	frontend/mextyapp/windows/runner/utils.cpp
+A	frontend/mextyapp/windows/runner/utils.h
+A	frontend/mextyapp/windows/runner/win32_window.cpp
+A	frontend/mextyapp/windows/runner/win32_window.h
 </file>
 
 <file path="src/api/Contracts/CreateUserRequest.cs">
@@ -321,42 +1478,96 @@ Si quieres, preparo un **README.md** listo para tu `src/Api/` con esta estructur
 using Microsoft.EntityFrameworkCore;
 using MexyApp.Api.Contracts;
 using MexyApp.Api.Domain;
+using Npgsql;
+using System.Net.Sockets;
 
 namespace MexyApp.Api.Endpoints;
 
 public static class UsersEndpoints
 {
+    private static readonly string[] EmailUniqueConstraintNames =
+    {
+        "IX_Users_Email", "users_email_key", "Users_Email_key"
+    };
+
+    private static bool IsUniqueEmailViolation(DbUpdateException ex)
+    {
+        var pg = ex.InnerException as PostgresException;
+        return pg?.SqlState == "23505"
+            && !string.IsNullOrEmpty(pg.ConstraintName)
+            && (EmailUniqueConstraintNames.Any(n => pg.ConstraintName.Equals(n, StringComparison.OrdinalIgnoreCase))
+                || pg.ConstraintName.Contains("email", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static bool IsTimeout(DbUpdateException ex)
+    {
+        // Detecta Timeout en la cadena de inner exceptions
+        Exception? cur = ex;
+        while (cur is not null)
+        {
+            if (cur is TimeoutException) return true;
+            if (cur is NpgsqlException npg && npg.InnerException is TimeoutException) return true;
+            if (cur is IOException io && io.InnerException is TimeoutException) return true;
+            if (cur is SocketException se && se.SocketErrorCode == SocketError.TimedOut) return true;
+            cur = cur.InnerException;
+        }
+        return false;
+    }
+
+    private static string Describe(DbUpdateException ex)
+    {
+        var pg = ex.InnerException as PostgresException;
+        return pg is null
+            ? $"Inner={ex.InnerException?.GetType().Name ?? "null"}; Msg={ex.InnerException?.Message ?? "null"}"
+            : $"SqlState={pg.SqlState}; Constraint={pg.ConstraintName ?? "null"}; Table={pg.TableName ?? "null"}; Detail={pg.Detail ?? "null"}";
+    }
+
     public static IEndpointRouteBuilder MapUsersEndpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/users").WithTags("Users");
 
-        // POST /api/users (validación temprana + unicidad de email)
-        group.MapPost("/", async (CreateUserRequest req, MexyContext db) =>
+        group.MapPost("/", async (CreateUserRequest req, MexyContext db, CancellationToken ct) =>
         {
-            // Validación de campos obligatorios
             if (string.IsNullOrWhiteSpace(req.Username) ||
                 string.IsNullOrWhiteSpace(req.Email) ||
                 string.IsNullOrWhiteSpace(req.Password))
-            {
                 return Results.BadRequest("Username, Email y Password son obligatorios.");
-            }
 
-            // Normalización de email
             var email = req.Email.Trim().ToLowerInvariant();
 
-            // Verificación de email duplicado
-            if (await db.Users.AnyAsync(u => u.Email == email))
-                return Results.Conflict($"Email '{email}' ya está registrado.");
+            // Baja el costo mientras diagnosticas (ver sección 3)
+            var hash = BCrypt.Net.BCrypt.HashPassword(req.Password, workFactor: 4);
 
-            // Hash de contraseña y creación de entidad
-            var hash = BCrypt.Net.BCrypt.HashPassword(req.Password);
             var user = new MexyApp.Models.User(req.Username, email, hash);
-
-            // Persistencia
             db.Users.Add(user);
-            await db.SaveChangesAsync();
 
-            // DTO de respuesta
+            try
+            {
+                await db.SaveChangesAsync(ct);
+            }
+            catch (DbUpdateException ex) when (IsUniqueEmailViolation(ex))
+            {
+                return Results.Conflict($"Email '{email}' ya está registrado.");
+            }
+            catch (DbUpdateException ex) when (IsTimeout(ex))
+            {
+                // Falla transitoria (red/latencia). Devuelve 503 para reintento del cliente.
+                return Results.Problem(
+                    title: "Timeout al persistir en la base de datos",
+                    detail: Describe(ex),
+                    statusCode: StatusCodes.Status503ServiceUnavailable
+                );
+            }
+            catch (DbUpdateException ex)
+            {
+                // Otra restricción / error no categorizado
+                return Results.Problem(
+                    title: "Error al persistir usuario",
+                    detail: Describe(ex),
+                    statusCode: StatusCodes.Status500InternalServerError
+                );
+            }
+
             var dto = new UserResponse(
                 user.Id,
                 user.Username,
@@ -368,12 +1579,12 @@ public static class UsersEndpoints
             return Results.Created($"/api/users/{user.Id}", dto);
         });
 
-        // GET /api/users/{id} → carga roles desde el backing field
-        group.MapGet("/{id:int}", async (int id, MexyContext db) =>
+        group.MapGet("/{id:int}", async (int id, MexyContext db, CancellationToken ct) =>
         {
             var user = await db.Users
-                .Include("_userRoles") // colección respaldada por el backing field
-                .FirstOrDefaultAsync(u => u.Id == id);
+                .AsNoTracking()
+                .Include("_userRoles")
+                .FirstOrDefaultAsync(u => u.Id == id, ct);
 
             if (user is null) return Results.NotFound();
 
@@ -418,15 +1629,18 @@ public class User
 
     private User() { } // EF
 
-    public User(string username, string email, string passwordHash)
-    {
-        Username = username.Trim();
-        Email = email.Trim().ToLowerInvariant();
-        PasswordHash = passwordHash;
+    
+public User(string username, string email, string passwordHash)
+{
+    Username = username.Trim();
+    Email = email.Trim().ToLowerInvariant();
+    PasswordHash = passwordHash;
 
-        // Rol base por defecto
+    // Rol base por defecto con guardia
+    if (!_userRoles.Any(r => r.Role == RoleName.Comprador))
         _userRoles.Add(new UserRole { Role = RoleName.Comprador });
-    }
+}
+
 
     public bool HasRole(RoleName role) => _userRoles.Any(r => r.Role == role);
 
@@ -520,79 +1734,66 @@ namespace MexyApp.Api.Domain
 </file>
 
 <file path="src/Program.cs">
+// src/Program.cs
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using MexyApp.Api.Domain;
-using MexyApp.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using  MexyApp.Api.Endpoints;
+using MexyApp.Api.Domain;
+using MexyApp.Api.Endpoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ==========================================
 // FLUJO PRINCIPAL (MAIN)
 // ==========================================
 
-// 1. Carga la configuración estricta desde appsettings.json
-// Limpia proveedores por defecto y asegura que el archivo exista.
+// 1) Cargar configuración desde appsettings.json (sin usar connString aquí)
 ConfigureAppConfiguration(builder);
 
-// 2. Obtiene la cadena de conexión
-// Busca 'Default' o parsea 'DefaultUri' (Postgres) si es necesario.
+// 2) Obtener cadena de conexión final
 string connString = GetAndParseConnectionString(builder.Configuration, builder.Environment.ContentRootPath);
 
-// 3. Registra los servicios en el contenedor DI
-// Configura EF Core con Npgsql, reintentos y el sistema de Logging.
+// 3) Registrar servicios (usa connString)
 RegisterServices(builder, connString);
 
-// 4. Construye la aplicación
+// 4) Construir la app
 var app = builder.Build();
 app.Logger.LogInformation("Inicio de aplicación. Configuración cargada.");
 
-// 5. Mapea los Endpoints (Rutas)
-// Define las rutas de la API, como /crear-usuario.
+// 5) Mapear endpoints
 RegisterEndpoints(app);
 
-// 6. Verificación de salud (Health Check manual)
-// Intenta conectar a la DB antes de abrir el servidor. Si falla, crashea adrede.
+// 6) Verificación de salud previa al arranque (crashea si no conecta)
 await VerifyDatabaseConnection(app);
 
-// 7. Arranca la aplicación
+// 7) Arrancar
 app.Run();
 
 
 // ==========================================
-// DEFINICIÓN DE FUNCIONES
+// FUNCIONES
 // ==========================================
 
 /// <summary>
-/// Limpia las fuentes de configuración y carga exclusivamente appsettings.json.
-/// Valida que el archivo exista físicamente.
+/// Limpia las fuentes y carga exclusivamente appsettings.json.
 /// </summary>
 void ConfigureAppConfiguration(WebApplicationBuilder builder)
 {
     builder.Configuration.Sources.Clear();
-    var appsettingsPath = Path.Combine(builder.Environment.ContentRootPath, "appsettings.json");
 
+    var appsettingsPath = Path.Combine(builder.Environment.ContentRootPath, "appsettings.json");
     if (!File.Exists(appsettingsPath))
         throw new FileNotFoundException($"No se encontró appsettings.json en: {appsettingsPath}");
 
-    try
-    {
-        builder.Configuration.AddJsonFile(appsettingsPath, optional: false, reloadOnChange: false);
-    }
-    catch (Exception ex)
-    {
-        throw new InvalidOperationException($"Error cargando appsettings.json ({appsettingsPath}): {ex.Message}", ex);
-    }
+    builder.Configuration.AddJsonFile(appsettingsPath, optional: false, reloadOnChange: false);
 }
 
 /// <summary>
-/// Resuelve la cadena de conexión final. 
-/// Prioriza 'Default'. Si no existe, toma 'DefaultUri' y la convierte a formato Npgsql.
+/// Resuelve la cadena de conexión. Prioriza 'ConnectionStrings:Default'.
+/// Si no existe, parsea 'ConnectionStrings:DefaultUri' (URI Postgres → Npgsql).
 /// </summary>
 string GetAndParseConnectionString(ConfigurationManager configuration, string rootPath)
 {
@@ -613,21 +1814,36 @@ string GetAndParseConnectionString(ConfigurationManager configuration, string ro
 }
 
 /// <summary>
-/// Inyecta DbContext y configura el Logging.
+/// Registra DbContext (pool) y Logging. Sin reintentos mientras diagnosticas.
 /// </summary>
 void RegisterServices(WebApplicationBuilder builder, string connString)
 {
-    // Registrar DbContext con reintentos
-    builder.Services.AddDbContext<MexyContext>(opt =>
+    builder.Services.AddDbContextPool<MexyContext>(opt =>
+    {
         opt.UseNpgsql(connString, npgsql =>
         {
-            npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null);
-        })
-    );
+            // Evita “permas” en comandos largos bajo latencia
+            npgsql.CommandTimeout(25);
+                npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null);
 
-    // Configurar Logging
+             // MaxBatchSize(1) -> retirar (mantén fuera salvo diagnóstico puntual)
+
+            // Actívalo luego de estabilizar si quieres reintentos:
+            // npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null);
+        });
+
+        // Más detalle en dev para diagnosticar
+        if (builder.Environment.IsDevelopment())
+        {
+            opt.EnableDetailedErrors();
+            opt.EnableSensitiveDataLogging();
+        }
+    });
+
     builder.Logging.ClearProviders();
     builder.Logging.AddConsole();
+    if (builder.Environment.IsDevelopment())
+        builder.Logging.AddDebug();
 }
 
 /// <summary>
@@ -635,26 +1851,23 @@ void RegisterServices(WebApplicationBuilder builder, string connString)
 /// </summary>
 void RegisterEndpoints(WebApplication app)
 {
-
-app.MapUsersEndpoints();
-
-
+    app.MapUsersEndpoints();
 }
 
 /// <summary>
-/// Ejecuta el Ping a la base de datos y lanza excepción si falla.
+/// Ping a la DB antes de abrir el servidor.
 /// </summary>
 async Task VerifyDatabaseConnection(WebApplication app)
 {
-    var pingOk = await PingDatabaseAsync(app.Services, app.Logger);
-    if (pingOk)
+    var ok = await PingDatabaseAsync(app.Services, app.Logger);
+    if (ok)
         app.Logger.LogInformation("Ping DB: OK");
     else
         throw new InvalidOperationException("Ping DB: ERROR de conexión. Verifica host/puerto/credenciales/SSL en appsettings.json.");
 }
 
 // ---------------------------------------------------------
-// HELPERS DE BAJO NIVEL (Lógica pura)
+// HELPERS
 // ---------------------------------------------------------
 
 static async Task<bool> PingDatabaseAsync(IServiceProvider services, ILogger logger)
@@ -676,59 +1889,68 @@ static async Task<bool> PingDatabaseAsync(IServiceProvider services, ILogger log
     }
 }
 
+/// <summary>
+/// Convierte un URI Postgres (postgres://user:pass@host:port/db) a cadena Npgsql.
+/// </summary>
 static string ParsePostgresUriToNpgsql(string uri)
 {
-    // Normalizar prefijo
+    // 1. Limpieza básica
     var v = uri.Trim();
-    if (!(v.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
-          v.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
+    if (v.StartsWith("postgres://")) v = v.Substring("postgres://".Length);
+    else if (v.StartsWith("postgresql://")) v = v.Substring("postgresql://".Length);
+    else throw new InvalidOperationException("El URI debe iniciar con 'postgres://' o 'postgresql://'.");
+
+    // 2. Separar credenciales (@)
+    var atIndex = v.LastIndexOf('@'); // Usamos LastIndexOf por si la contraseña tiene '@'
+    if (atIndex <= 0) throw new InvalidOperationException("No se encontró '@' separando credenciales del host.");
+
+    var userInfo = v.Substring(0, atIndex);
+    var hostData = v.Substring(atIndex + 1);
+
+    // 3. Separar Usuario y Contraseña (:)
+    var colonIndex = userInfo.IndexOf(':');
+    if (colonIndex <= 0) throw new InvalidOperationException("No se encontró ':' entre usuario y contraseña.");
+    
+    var username = userInfo.Substring(0, colonIndex);
+    var password = userInfo.Substring(colonIndex + 1);
+
+    // 4. Separar Host y Base de Datos (/)
+    var slashIndex = hostData.IndexOf('/');
+    if (slashIndex <= 0) throw new InvalidOperationException("No se encontró '/' antes de la base de datos.");
+
+    var hostPort = hostData.Substring(0, slashIndex);
+    var dbAndParams = hostData.Substring(slashIndex + 1);
+
+    // 5. Separar Nombre de DB y Parámetros (?)
+    string database;
+    string paramsString = "";
+
+    var questionMarkIndex = dbAndParams.IndexOf('?');
+    if (questionMarkIndex >= 0)
     {
-        throw new InvalidOperationException("El URI debe iniciar con 'postgres://' o 'postgresql://'.");
-    }
-
-    // Quitar el esquema
-    var idxScheme = v.IndexOf("://", StringComparison.Ordinal);
-    var rest = v.Substring(idxScheme + 3);
-
-    // userinfo@hostport/db
-    var at = rest.IndexOf('@');
-    if (at <= 0) throw new InvalidOperationException("URI inválido: falta '@' entre credenciales y host.");
-
-    var userinfo = rest.Substring(0, at);
-    var hostAndPath = rest.Substring(at + 1);
-
-    // user:password
-    var colon = userinfo.IndexOf(':');
-    if (colon <= 0) throw new InvalidOperationException("URI inválido: falta ':' entre usuario y contraseña.");
-    var username = userinfo.Substring(0, colon);
-    var password = userinfo.Substring(colon + 1); 
-
-    // host:port/db
-    var slash = hostAndPath.IndexOf('/');
-    if (slash <= 0) throw new InvalidOperationException("URI inválido: falta '/' antes del nombre de la base.");
-    var hostport = hostAndPath.Substring(0, slash);
-    var database = hostAndPath.Substring(slash + 1);
-    if (string.IsNullOrWhiteSpace(database)) throw new InvalidOperationException("URI inválido: nombre de base vacío.");
-
-    // host:port
-    string host;
-    int port = 5432;
-    var colonHp = hostport.LastIndexOf(':');
-    if (colonHp > 0)
-    {
-        host = hostport.Substring(0, colonHp);
-        var portStr = hostport.Substring(colonHp + 1);
-        if (!int.TryParse(portStr, out port))
-            throw new InvalidOperationException($"Puerto inválido en URI: '{portStr}'.");
+        database = dbAndParams.Substring(0, questionMarkIndex);
+        // Convertimos el formato URL (&) al formato Npgsql (;)
+        paramsString = dbAndParams.Substring(questionMarkIndex + 1).Replace('&', ';');
     }
     else
     {
-        host = hostport;
+        database = dbAndParams;
     }
 
-    // Construir cadena Npgsql
-    var npgsql = $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
-    return npgsql;
+    // 6. Manejo del Puerto
+    string host = hostPort;
+    string port = "5432";
+    
+    var portColon = hostPort.LastIndexOf(':');
+    if (portColon >= 0)
+    {
+        host = hostPort.Substring(0, portColon);
+        port = hostPort.Substring(portColon + 1);
+    }
+
+    // 7. Construir cadena final
+    // Nota: Agregamos paramsString al final para que KeepAlive, SSL, etc. se apliquen
+    return $"Host={host};Port={port};Database={database};Username={username};Password={password};{paramsString}";
 }
 </file>
 

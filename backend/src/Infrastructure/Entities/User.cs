@@ -23,15 +23,18 @@ public class User
 
     private User() { } // EF
 
-    public User(string username, string email, string passwordHash)
-    {
-        Username = username.Trim();
-        Email = email.Trim().ToLowerInvariant();
-        PasswordHash = passwordHash;
+    
+public User(string username, string email, string passwordHash)
+{
+    Username = username.Trim();
+    Email = email.Trim().ToLowerInvariant();
+    PasswordHash = passwordHash;
 
-        // Rol base por defecto
-       /*  _userRoles.Add(new UserRole { Role = RoleName.Comprador }); */
-    }
+    // Rol base por defecto con guardia
+    if (!_userRoles.Any(r => r.Role == RoleName.Comprador))
+        _userRoles.Add(new UserRole { Role = RoleName.Comprador });
+}
+
 
     public bool HasRole(RoleName role) => _userRoles.Any(r => r.Role == role);
 

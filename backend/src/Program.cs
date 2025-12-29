@@ -88,10 +88,10 @@ void RegisterServices(WebApplicationBuilder builder, string connString)
         opt.UseNpgsql(connString, npgsql =>
         {
             // Evita “permas” en comandos largos bajo latencia
-            npgsql.CommandTimeout(10);
+            npgsql.CommandTimeout(25);
+                npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null);
 
-            // Evita batches grandes (inserta Users y UserRoles sin agrupar)
-            npgsql.MaxBatchSize(1);
+             // MaxBatchSize(1) -> retirar (mantén fuera salvo diagnóstico puntual)
 
             // Actívalo luego de estabilizar si quieres reintentos:
             // npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null);
@@ -159,47 +159,61 @@ static async Task<bool> PingDatabaseAsync(IServiceProvider services, ILogger log
 /// </summary>
 static string ParsePostgresUriToNpgsql(string uri)
 {
+    // 1. Limpieza básica
     var v = uri.Trim();
-    if (!(v.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
-          v.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
-        throw new InvalidOperationException("El URI debe iniciar con 'postgres://' o 'postgresql://'.");
+    if (v.StartsWith("postgres://")) v = v.Substring("postgres://".Length);
+    else if (v.StartsWith("postgresql://")) v = v.Substring("postgresql://".Length);
+    else throw new InvalidOperationException("El URI debe iniciar con 'postgres://' o 'postgresql://'.");
 
-    var idxScheme = v.IndexOf("://", StringComparison.Ordinal);
-    var rest = v.Substring(idxScheme + 3);
+    // 2. Separar credenciales (@)
+    var atIndex = v.LastIndexOf('@'); // Usamos LastIndexOf por si la contraseña tiene '@'
+    if (atIndex <= 0) throw new InvalidOperationException("No se encontró '@' separando credenciales del host.");
 
-    var at = rest.IndexOf('@');
-    if (at <= 0) throw new InvalidOperationException("URI inválido: falta '@' entre credenciales y host.");
+    var userInfo = v.Substring(0, atIndex);
+    var hostData = v.Substring(atIndex + 1);
 
-    var userinfo = rest.Substring(0, at);
-    var hostAndPath = rest.Substring(at + 1);
+    // 3. Separar Usuario y Contraseña (:)
+    var colonIndex = userInfo.IndexOf(':');
+    if (colonIndex <= 0) throw new InvalidOperationException("No se encontró ':' entre usuario y contraseña.");
+    
+    var username = userInfo.Substring(0, colonIndex);
+    var password = userInfo.Substring(colonIndex + 1);
 
-    var colon = userinfo.IndexOf(':');
-    if (colon <= 0) throw new InvalidOperationException("URI inválido: falta ':' entre usuario y contraseña.");
-    var username = userinfo.Substring(0, colon);
-    var password = userinfo.Substring(colon + 1);
+    // 4. Separar Host y Base de Datos (/)
+    var slashIndex = hostData.IndexOf('/');
+    if (slashIndex <= 0) throw new InvalidOperationException("No se encontró '/' antes de la base de datos.");
 
-    var slash = hostAndPath.IndexOf('/');
-    if (slash <= 0) throw new InvalidOperationException("URI inválido: falta '/' antes del nombre de la base.");
-    var hostport = hostAndPath.Substring(0, slash);
-    var database = hostAndPath.Substring(slash + 1);
-    if (string.IsNullOrWhiteSpace(database)) throw new InvalidOperationException("URI inválido: nombre de base vacío.");
+    var hostPort = hostData.Substring(0, slashIndex);
+    var dbAndParams = hostData.Substring(slashIndex + 1);
 
-    string host;
-    int port = 5432;
-    var colonHp = hostport.LastIndexOf(':');
-    if (colonHp > 0)
+    // 5. Separar Nombre de DB y Parámetros (?)
+    string database;
+    string paramsString = "";
+
+    var questionMarkIndex = dbAndParams.IndexOf('?');
+    if (questionMarkIndex >= 0)
     {
-        host = hostport.Substring(0, colonHp);
-        var portStr = hostport.Substring(colonHp + 1);
-        if (!int.TryParse(portStr, out port))
-            throw new InvalidOperationException($"Puerto inválido en URI: '{portStr}'.");
+        database = dbAndParams.Substring(0, questionMarkIndex);
+        // Convertimos el formato URL (&) al formato Npgsql (;)
+        paramsString = dbAndParams.Substring(questionMarkIndex + 1).Replace('&', ';');
     }
     else
     {
-        host = hostport;
+        database = dbAndParams;
     }
 
-    var npgsql =
-        $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
-    return npgsql;
+    // 6. Manejo del Puerto
+    string host = hostPort;
+    string port = "5432";
+    
+    var portColon = hostPort.LastIndexOf(':');
+    if (portColon >= 0)
+    {
+        host = hostPort.Substring(0, portColon);
+        port = hostPort.Substring(portColon + 1);
+    }
+
+    // 7. Construir cadena final
+    // Nota: Agregamos paramsString al final para que KeepAlive, SSL, etc. se apliquen
+    return $"Host={host};Port={port};Database={database};Username={username};Password={password};{paramsString}";
 }
